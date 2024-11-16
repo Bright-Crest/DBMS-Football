@@ -7,7 +7,7 @@ def create_connection():
     conn = pymysql.connect(
         host="localhost",  # 根据你的数据库主机设置
         user="root",  # MySQL用户名#
-        password="daerwen",# MySQL密码
+        password="",# MySQL密码
         database="NIS3351",  # 数据库名称
     )
     return conn
