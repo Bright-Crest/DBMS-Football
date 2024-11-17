@@ -23,4 +23,7 @@ from football_app import views
 urlpatterns = [
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
     path("admin/", admin.site.urls),
+    path("", ..., name="home"),
+    path("login/", ..., name="login"),
+    path("logout/", ..., name="logout"),
 ]

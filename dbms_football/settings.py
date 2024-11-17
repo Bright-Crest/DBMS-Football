@@ -49,6 +49,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "football_app.middleware.InfoMiddleware",
+    "football_app.middleware.LoginMiddleware",
+    "football_app.middleware.AdminMiddleware",
 ]
 
 ROOT_URLCONF = "dbms_football.urls"
