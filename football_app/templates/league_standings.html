@@ -1,19 +1,48 @@
+{% extends 'root.html' %}
+
+{% block content %}
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="card-title">积分榜</h1>
+      </div>
+      <div class="card-body">
+        {% for league, teams in standings.items %}
+          <h2>{{ league }}</h2>
+          <table class="table table-bordered">
+            <thead></thead>
+            <tbody class="table-group-divider">
+              {% for team in teams %}
+                <tr>
+                  <td>{{ team.team_name }}</td>
+                  <td>{{ team.team_score }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% comment %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-</head>
-<body>
-<h1>积分榜</h1>
-{% for league, teams in standings.items %}
-    <h2>{{ league }}</h2>
-    <ul>
+  </head>
+  <body>
+    <h1>积分榜</h1>
+    {% for league, teams in standings.items %}
+      <h2>{{ league }}</h2>
+      <ul>
         {% for team in teams %}
-            <li>{{ team.team_name }} - {{ team.team_score }} 分</li>
+          <li>{{ team.team_name }} - {{ team.team_score }} 分</li>
         {% endfor %}
-    </ul>
-{% endfor %}
-
-</body>
+      </ul>
+    {% endfor %}
+  </body>
 </html>
+{% endcomment %}

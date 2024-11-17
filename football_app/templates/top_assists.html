@@ -1,19 +1,48 @@
+{% extends 'root.html' %}
+
+{% block content %}
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="card-title">助攻榜</h1>
+      </div>
+      <div class="card-body">
+        {% for league, players in league_rankings.items %}
+          <h2>{{ league }}</h2>
+          <table class="table table-bordered">
+            <thead></thead>
+            <tbody class="table-group-divider">
+              {% for player in players %}
+                <tr>
+                  <td>{{ player.player_name }}</td>
+                  <td>{{ player.total_assists }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% comment %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-</head>
-<body>
-<h1>助攻榜</h1>
-{% for league, players in league_rankings.items %}
-    <h2>{{ league }}</h2>
-    <ul>
+  </head>
+  <body>
+    <h1>助攻榜</h1>
+    {% for league, players in league_rankings.items %}
+      <h2>{{ league }}</h2>
+      <ul>
         {% for player in players %}
-            <li>{{ player.player_name }} - {{ player.total_assists }} 助攻</li>
+          <li>{{ player.player_name }} - {{ player.total_assists }} 助攻</li>
         {% endfor %}
-    </ul>
-{% endfor %}
-
-</body>
+      </ul>
+    {% endfor %}
+  </body>
 </html>
+{% endcomment %}

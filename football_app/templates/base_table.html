@@ -1,0 +1,23 @@
+{% extends 'root.html' %}
+
+{% block style %}
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="card-title">{% block table_title %}表{% endblock %}</h1>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>{% block table_head %}{% endblock table_head %}</thead>
+          <tbody class="table-group-divider">{% block table_body %}{% endblock table_body %}</tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

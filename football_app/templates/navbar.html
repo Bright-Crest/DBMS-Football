@@ -28,11 +28,11 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" aria-current="page" href="#">主页</a></li>
+          <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'home' %}">主页</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">比赛</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">比赛结果</a></li>
+              <li><a class="dropdown-item" href="{% url 'football_app:match_results' %}">比赛结果</a></li>
               <li><a class="dropdown-item" href="#">赛程</a></li>
             </ul>
           </li>
@@ -40,7 +40,7 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">球队</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">球队基本信息</a></li>
-              <li><a class="dropdown-item" href="#">球队积分榜</a></li>
+              <li><a class="dropdown-item" href="{% url 'football_app:league_standings' %}">球队积分榜</a></li>
               <li><a class="dropdown-item" href="#">球队射手榜</a></li>
               <li><a class="dropdown-item" href="#">球队助攻榜</a></li>
               <li><a class="dropdown-item" href="#">球队红牌榜</a></li>
@@ -53,8 +53,8 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">球员</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">球员基本信息</a></li>
-              <li><a class="dropdown-item" href="#">球员射手榜</a></li>
-              <li><a class="dropdown-item" href="#">球员助攻榜</a></li>
+              <li><a class="dropdown-item" href="{% url 'football_app:top_scorers' %}">球员射手榜</a></li>
+              <li><a class="dropdown-item" href="{% url 'football_app:top_assists' %}">球员助攻榜</a></li>
               <li><a class="dropdown-item" href="#">球员红牌榜</a></li>
               <li><a class="dropdown-item" href="#">球员黄牌榜</a></li>
               <li><a class="dropdown-item" href="#">球员失误榜</a></li>
@@ -66,7 +66,7 @@
           <li class="nav-item">
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="搜索" aria-label="Search" />
-              <button class="btn btn-outline-success" type="submit">搜索</button>
+              <button class="btn btn-outline-success text-nowrap" type="submit">搜索</button>
             </form>
           </li>
           {% if not user.is_authenticated %}
