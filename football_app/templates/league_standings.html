@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>积分榜</h1>
+{% for league, teams in standings.items %}
+    <h2>{{ league }}</h2>
+    <ul>
+        {% for team in teams %}
+            <li>{{ team.team_name }} - {{ team.team_score }} 分</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+</body>
+</html>

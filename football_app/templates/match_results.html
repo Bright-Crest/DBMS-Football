@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>赛果列表</h1>
+{% for league, matches in match_results.items %}
+    <h2>{{ league }}</h2>
+    <ul>
+        {% for match in matches %}
+            <li>{{ match.home_team.team_name }} {{ match.home_team_goals }} : {{ match.away_team_goals }} {{ match.away_team.team_name }}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+</body>
+</html>

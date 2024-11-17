@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>助攻榜</h1>
+{% for league, players in league_rankings.items %}
+    <h2>{{ league }}</h2>
+    <ul>
+        {% for player in players %}
+            <li>{{ player.player_name }} - {{ player.total_assists }} 助攻</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+</body>
+</html>
