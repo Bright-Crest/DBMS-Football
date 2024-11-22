@@ -4,7 +4,7 @@
   <div class="container mt-3">
     <div class="card">
       <div class="card-header">
-        <h1 class="card-title">积分榜</h1>
+        <h1 class="card-title">球队红牌榜</h1>
       </div>
       <div class="card-body">
         {% for league, teams in standings.items %}
@@ -13,14 +13,14 @@
             <thead>
               <tr>
                 <th>球队名称</th>
-                <th>积分</th>
+                <th>红牌数</th>
               </tr>
             </thead>
-            <tbody class="table-group-divider">
-              {% for team in teams %}
+            <tbody>
+              {% for item in teams %}
                 <tr>
-                  <td>{{ team.team_name }}</td>
-                  <td>{{ team.team_score }}</td>
+                  <td>{{ item.team.team_name }}</td>
+                  <td>{{ item.total_red_cards }}</td>
                 </tr>
               {% endfor %}
             </tbody>
@@ -30,3 +30,4 @@
     </div>
   </div>
 {% endblock %}
+

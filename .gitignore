@@ -3,6 +3,7 @@
 
 # ignore personal scripts
 /bc_scripts/
+get_data.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

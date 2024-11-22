@@ -4,23 +4,23 @@
   <div class="container mt-3">
     <div class="card">
       <div class="card-header">
-        <h1 class="card-title">积分榜</h1>
+        <h1 class="card-title">球员红牌榜</h1>
       </div>
       <div class="card-body">
-        {% for league, teams in standings.items %}
+        {% for league, players in league_rankings.items %}
           <h2>{{ league }}</h2>
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>球队名称</th>
-                <th>积分</th>
+                <th>球员</th>
+                <th>红牌数</th>
               </tr>
             </thead>
             <tbody class="table-group-divider">
-              {% for team in teams %}
+              {% for player in players %}
                 <tr>
-                  <td>{{ team.team_name }}</td>
-                  <td>{{ team.team_score }}</td>
+                  <td>{{ player.player_name }}</td>
+                  <td>{{ player.total_red_cards }}</td>
                 </tr>
               {% endfor %}
             </tbody>

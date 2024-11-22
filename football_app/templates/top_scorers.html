@@ -4,13 +4,18 @@
   <div class="container mt-3">
     <div class="card">
       <div class="card-header">
-        <h1 class="card-title">射手榜</h1>
+        <h1 class="card-title">球员射手榜</h1>
       </div>
       <div class="card-body">
         {% for league, players in league_rankings.items %}
           <h2>{{ league }}</h2>
           <table class="table table-bordered">
-            <thead></thead>
+            <thead>
+              <tr>
+                <th>球员</th>
+                <th>进球数</th>
+              </tr>
+            </thead>
             <tbody class="table-group-divider">
               {% for player in players %}
                 <tr>
@@ -25,24 +30,3 @@
     </div>
   </div>
 {% endblock %}
-
-{% comment %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-  </head>
-  <body>
-    <h1>射手榜</h1>
-    {% for league, players in league_rankings.items %}
-      <h2>{{ league }}</h2>
-      <ul>
-        {% for player in players %}
-          <li>{{ player.player_name }} - {{ player.total_goals }} 球</li>
-        {% endfor %}
-      </ul>
-    {% endfor %}
-  </body>
-</html>
-{% endcomment %}
