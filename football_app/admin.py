@@ -3,12 +3,12 @@ from .models import Team, Player, Coach, Match, Participation
 
 # 自定义 Team 模型的显示方式
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ('team_name', 'team_league', 'team_score', 'team_goals', 'team_assists', 'team_red_card', 'team_yellow_card', 'team_fault', 'team_tackling')
+    list_display = ('team_name', 'team_league', 'team_score', 'team_goals', 'team_assists', 'team_red_card', 'team_yellow_card')
     search_fields = ('team_name', 'team_league')  # 支持模糊搜索
 
 # 自定义 Player 模型的显示方式
 class PlayerAdmin(admin.ModelAdmin):
-    list_display = ('player_name', 'team', 'player_goals', 'player_assists', 'player_red_card', 'player_yellow_card', 'player_fault', 'player_tackling')
+    list_display = ('player_name', 'team', 'player_goals', 'player_assists', 'player_red_card', 'player_yellow_card')
     search_fields = ('player_name', 'team__team_name')  # 支持球员名和球队名的模糊搜索
     list_filter = ('team',)  # 按球队筛选
 

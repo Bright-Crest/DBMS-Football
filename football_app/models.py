@@ -11,9 +11,7 @@ class Team(models.Model):
     team_assists = models.IntegerField(default=0)  # 助攻数
     team_red_card = models.IntegerField(default=0)  # 红牌数
     team_yellow_card = models.IntegerField(default=0)  # 黄牌数
-    team_fault = models.IntegerField(default=0)  # 犯规次数
-    team_tackling = models.IntegerField(default=0)  # 抢断次数
-    team_index = models.TextField(null=True, blank=True)  # 模糊查询备注
+
 
     def __str__(self):
         return self.team_name
@@ -29,9 +27,6 @@ class Player(models.Model):
     player_assists = models.IntegerField(default=0)  # 助攻数
     player_red_card = models.IntegerField(default=0)  # 红牌数
     player_yellow_card = models.IntegerField(default=0)  # 黄牌数
-    player_fault = models.IntegerField(default=0)  # 犯规次数
-    player_tackling = models.IntegerField(default=0)  # 抢断次数
-    player_index = models.TextField(null=True, blank=True)  # 模糊查询备注
     team = models.ForeignKey(Team, on_delete=models.CASCADE)  # 外键，所属球队
 
     def __str__(self):
@@ -44,7 +39,6 @@ class Coach(models.Model):
     coach_name = models.CharField(max_length=100)  # 教练姓名
     coach_nationality = models.CharField(max_length=100, null=True, blank=True)  # 国籍
     coach_age = models.IntegerField(null=True, blank=True)  # 年龄
-    coach_index = models.TextField(null=True, blank=True)  # 模糊查询备注
     team = models.ForeignKey(Team, on_delete=models.CASCADE)  # 外键，执教球队
 
     def __str__(self):
