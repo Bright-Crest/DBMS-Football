@@ -76,7 +76,8 @@ def goal_ranking(request):
     for team, goals in sorted_teams:
         standings[team.team_league].append({'team': team, 'total_goals': goals})
 
-    return render(request, 'goal_ranking.html', {'standings': standings})
+    return render(request, 'goal_ranking.html', {'standings': dict(standings)})
+
 
 def assist_ranking(request):
     """球队助攻榜"""
@@ -100,4 +101,11 @@ def assist_ranking(request):
     for team, assists in sorted_teams:
         standings[team.team_league].append({'team': team, 'total_assists': assists})
 
-    return render(request, 'assist_ranking.html', {'standings': standings})
+    return render(request, 'assist_ranking.html', {'standings': dict(standings)})
+
+
+def player_info(request):
+    """球员信息页面"""
+    # 获取所有球员信息
+    players = Player.objects.all()
+    return render(request, 'player_info.html', {'players': players})

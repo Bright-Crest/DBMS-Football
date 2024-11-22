@@ -39,7 +39,6 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">球队</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">球队基本信息</a></li>
               <li><a class="dropdown-item" href="{% url 'football_app:league_standings' %}">球队积分榜</a></li>
               <li><a class="dropdown-item" href="{% url 'football_app:goal_ranking' %}">球队射手榜</a></li>
               <li><a class="dropdown-item" href="{% url 'football_app:assist_ranking' %}">球队助攻榜</a></li>
@@ -52,7 +51,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">球员</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">球员基本信息</a></li>
+              <li><a class="dropdown-item" href="{% url 'football_app:player_info' %}">球员基本信息</a></li>
               <li><a class="dropdown-item" href="{% url 'football_app:top_scorers' %}">球员射手榜</a></li>
               <li><a class="dropdown-item" href="{% url 'football_app:top_assists' %}">球员助攻榜</a></li>
               <li><a class="dropdown-item" href="#">球员红牌榜</a></li>

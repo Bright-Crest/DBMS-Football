@@ -1,0 +1,45 @@
+{% extends 'root.html' %}
+
+{% block content %}
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="card-title">球员信息</h1>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>球员姓名</th>
+              <th>国籍</th>
+              <th>年龄</th>
+              <th>进球数</th>
+              <th>助攻数</th>
+              <th>红牌数</th>
+              <th>黄牌数</th>
+              <th>犯规次数</th>
+              <th>抢断次数</th>
+              <th>所属球队</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for player in players %}
+              <tr>
+                <td>{{ player.player_name }}</td>
+                <td>{{ player.player_nationality }}</td>
+                <td>{{ player.player_age }}</td>
+                <td>{{ player.player_goals }}</td>
+                <td>{{ player.player_assists }}</td>
+                <td>{{ player.player_red_card }}</td>
+                <td>{{ player.player_yellow_card }}</td>
+                <td>{{ player.player_fault }}</td>
+                <td>{{ player.player_tackling }}</td>
+                <td>{{ player.team.team_name }}</td> <!-- 显示所属球队名称 -->
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
