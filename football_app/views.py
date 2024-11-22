@@ -2,40 +2,6 @@ from django.shortcuts import render
 from django.db.models import Sum
 
 from collections import defaultdict
-# from enum import Enum
-
-
-# class Rank_type(Enum):
-#     score = 1
-#     goals = 2
-#     assists = 3
-#     red_card = 4
-#     yellow_card = 5
-#     fault = 6
-#     tackling = 7
-
-
-# def league_ranks(request, is_team, rank_type, leagues=None):
-#     '''
-
-#     Args:
-#         request:
-#         is_team (bool):
-#         rank_type (Rank_type|int):
-#         leagues (list):
-#     '''
-
-#     # if leagues is None:
-#     #     leagues = Team.objects.values_list('team_league', flat=True).distinct()
-#     # model = Team if is_team else Player
-#     # league_rankings = {}
-#     # for league in leagues:
-#     #     objs = (
-#     #         model.objects.filter(team__team_league=league)
-#     #         .annotate(result=)
-#     #     )
-
-#     pass
 
 from .models import Player, Team
 from .models import Match
@@ -45,8 +11,11 @@ def match_results(request):
     '''
     比赛结果
     '''
+
+    # 选出所有不同的联赛
     leagues = Match.objects.values_list('league_name', flat=True).distinct()
-    match_results = {}
+    # 用于存储 {联赛: 比赛对象}
+    match_results = dict()
     for league in leagues:
         matches = Match.objects.filter(league_name=league).order_by('season_year', 'match_id')
         match_results[league] = matches
@@ -59,7 +28,10 @@ def top_scorers(request):
     '''
     球员进球榜
     '''
+
+    # 选出所有不同的联赛
     leagues = Team.objects.values_list('team_league', flat=True).distinct()
+    # 用于存储 {联赛: 球员对象}
     league_rankings = {}
     for league in leagues:
         players = (
