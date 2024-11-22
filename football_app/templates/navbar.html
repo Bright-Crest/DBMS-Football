@@ -42,10 +42,8 @@
               <li><a class="dropdown-item" href="{% url 'football_app:league_standings' %}">球队积分榜</a></li>
               <li><a class="dropdown-item" href="{% url 'football_app:goal_ranking' %}">球队射手榜</a></li>
               <li><a class="dropdown-item" href="{% url 'football_app:assist_ranking' %}">球队助攻榜</a></li>
-              <li><a class="dropdown-item" href="#">球队红牌榜</a></li>
-              <li><a class="dropdown-item" href="#">球队黄牌榜</a></li>
-              <li><a class="dropdown-item" href="#">球队失误榜</a></li>
-              <li><a class="dropdown-item" href="#">球队抢断榜</a></li>
+              <li><a class="dropdown-item" href="{% url 'football_app:red_card_ranking' %}">球队红牌榜</a></li>
+              <li><a class="dropdown-item" href="{% url 'football_app:yellow_card_ranking' %}">球队黄牌榜</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -54,10 +52,8 @@
               <li><a class="dropdown-item" href="{% url 'football_app:player_info' %}">球员基本信息</a></li>
               <li><a class="dropdown-item" href="{% url 'football_app:top_scorers' %}">球员射手榜</a></li>
               <li><a class="dropdown-item" href="{% url 'football_app:top_assists' %}">球员助攻榜</a></li>
-              <li><a class="dropdown-item" href="#">球员红牌榜</a></li>
-              <li><a class="dropdown-item" href="#">球员黄牌榜</a></li>
-              <li><a class="dropdown-item" href="#">球员失误榜</a></li>
-              <li><a class="dropdown-item" href="#">球员抢断榜</a></li>
+              <li><a class="dropdown-item" href="{% url 'football_app:top_red_cards' %}">球员红牌榜</a></li>
+              <li><a class="dropdown-item" href="{% url 'football_app:top_yellow_cards' %}">球员黄牌榜</a></li>
             </ul>
           </li>
         </ul>
