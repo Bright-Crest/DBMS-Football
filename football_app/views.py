@@ -48,7 +48,6 @@ from .models import Match
 def match_results(request):
     leagues = Match.objects.values_list('league_name', flat=True).distinct()
     match_results = {}
-    # BUG: 由于比赛有两支队伍，比赛被输出两次
     for league in leagues:
         matches = Match.objects.filter(league_name=league).order_by('season_year', 'match_id')
         match_results[league] = matches
