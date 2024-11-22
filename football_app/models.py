@@ -60,6 +60,7 @@ class Match(models.Model):
     away_team_goals = models.IntegerField(default=0)  # 客队进球数
     league_name = models.CharField(max_length=100)  # 联赛名称
     season_year = models.CharField(max_length=9)  # 联赛赛季
+    is_completed = models.BooleanField(default=False)  # 标记比赛是否完赛，默认未完赛
 
     def __str__(self):
         return f"{self.home_team} vs {self.away_team} ({self.league_name}, {self.season_year})"
