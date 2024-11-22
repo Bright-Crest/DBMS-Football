@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Sum
 from .models import Player, Team
+from collections import defaultdict
 
 
 def top_scorers(request):
@@ -52,3 +53,52 @@ def match_results(request):
         matches = Match.objects.filter(league_name=league).order_by('season_year', 'match_id')
         match_results[league] = matches
     return render(request, 'match_results.html', {'match_results': match_results})
+
+
+def goal_ranking(request):
+    """球队进球榜"""
+    # 获取所有球队
+    teams = Team.objects.all()
+
+    # 创建一个字典存储每个球队的总进球数
+    team_goals = defaultdict(int)
+
+    # 遍历所有球员，累计每个球队的进球数
+    players = Player.objects.all()
+    for player in players:
+        if player.team:  # 确保球员关联了一个球队
+            team_goals[player.team] += player.player_goals
+
+    # 将球队按进球数降序排序
+    sorted_teams = sorted(team_goals.items(), key=lambda x: x[1], reverse=True)
+
+    # 将球队按联赛分组
+    standings = defaultdict(list)
+    for team, goals in sorted_teams:
+        standings[team.team_league].append({'team': team, 'total_goals': goals})
+
+    return render(request, 'goal_ranking.html', {'standings': standings})
+
+def assist_ranking(request):
+    """球队助攻榜"""
+    # 获取所有球队
+    teams = Team.objects.all()
+
+    # 创建一个字典存储每个球队的总助攻数
+    team_assists = defaultdict(int)
+
+    # 遍历所有球员，累计每个球队的助攻数
+    players = Player.objects.all()
+    for player in players:
+        if player.team:  # 确保球员关联了一个球队
+            team_assists[player.team] += player.player_assists
+
+    # 将球队按助攻数降序排序
+    sorted_teams = sorted(team_assists.items(), key=lambda x: x[1], reverse=True)
+
+    # 将球队按联赛分组
+    standings = defaultdict(list)
+    for team, assists in sorted_teams:
+        standings[team.team_league].append({'team': team, 'total_assists': assists})
+
+    return render(request, 'assist_ranking.html', {'standings': standings})

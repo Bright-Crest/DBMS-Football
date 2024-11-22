@@ -1,0 +1,33 @@
+{% extends 'root.html' %}
+
+{% block content %}
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="card-title">球队进球榜</h1>
+      </div>
+      <div class="card-body">
+        {% for league, teams in standings.items %}
+          <h2>{{ league }}</h2>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>球队名称</th>
+                <th>进球数</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in teams %}
+                <tr>
+                  <td>{{ item.team.team_name }}</td>
+                  <td>{{ item.total_goals }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
