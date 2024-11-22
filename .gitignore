@@ -1,6 +1,9 @@
 # ignore STATIC_ROOT defined in dbms_football/settings.py
 /static/
 
+# ignore personal scripts
+/bc_scripts/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
