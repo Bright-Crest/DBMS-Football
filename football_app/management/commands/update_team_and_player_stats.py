@@ -1,6 +1,5 @@
 from django.core.management.base import BaseCommand
 from football_app.models import Match, Team, Participation, Player
-from django.db.models import Sum
 
 class Command(BaseCommand):
     help = "更新球队积分和球员的进球、助攻等信息"
@@ -12,8 +11,8 @@ class Command(BaseCommand):
         # 2. 清零球员的进球数、助攻数、红黄牌等
         Player.objects.update(player_goals=0, player_assists=0, player_red_card=0, player_yellow_card=0)
 
-        # 3. 更新球队积分
-        matches = Match.objects.all()
+        # 3. 只更新已完赛的比赛
+        matches = Match.objects.filter(is_completed=True)  # 只获取已完赛的比赛
         for match in matches:
             home_team = match.home_team
             away_team = match.away_team
@@ -31,7 +30,7 @@ class Command(BaseCommand):
             home_team.save()
             away_team.save()
 
-        # 4. 更新球员数据
+        # 4. 更新球员数据（根据参与的比赛更新）
         participations = Participation.objects.all()
         for participation in participations:
             player = participation.player
@@ -45,4 +44,4 @@ class Command(BaseCommand):
             # 保存球员数据更新
             player.save()
 
-        self.stdout.write(self.style.SUCCESS("球队积分和球员数据更新完成！"))
+        self.stdout.write(self.style.SUCCESS("已完赛的球队积分和球员数据更新完成！"))
